@@ -4,31 +4,37 @@ import AiVoiceData from './AiVoiceData';
 import celebVoiceData from '../CelebVoiceData';
 import VoiceCard from './VoiceCard';
 
-function Voice() {
-    const [selectedCeleb, setSelectedCeleb] = useState(true);
-    const [selectedAI, setSelectedAI] = useState(false);
-    const [currentlyPlaying, setCurrentlyPlaying] = useState(null);
+interface VoiceData {
+    buttonLabel: string;
+    audioSource: string;
+    imageSource: string;
+}
 
-    const handleCelebSelect = (buttonLabel, audioSource) => {
+function Voice() {
+    const [selectedCeleb, setSelectedCeleb] = useState<string | null>(null);
+    const [selectedAI, setSelectedAI] = useState<string | null>(null);
+    const [currentlyPlaying, setCurrentlyPlaying] = useState<string | null>(null);
+
+    const handleCelebSelect = (buttonLabel: string, audioSource: string) => {
         setSelectedCeleb(buttonLabel);
         setSelectedAI(null);
         setCurrentlyPlaying(audioSource);
     };
 
-    const handleAISelect = (buttonLabel, audioSource) => {
+    const handleAISelect = (buttonLabel: string, audioSource: string) => {
         setSelectedAI(buttonLabel);
         setSelectedCeleb(null);
         setCurrentlyPlaying(audioSource);
     };
 
     const handleCeleb = () => {
-        setSelectedAI(false);
-        setSelectedCeleb(true);
+        setSelectedAI(null);
+        setSelectedCeleb('Celeb Voices');
     };
 
     const handleAI = () => {
-        setSelectedAI(true);
-        setSelectedCeleb(false);
+        setSelectedAI('Actors Voices');
+        setSelectedCeleb(null);
     };
 
     return (
@@ -52,33 +58,18 @@ function Voice() {
             </div>
 
             <div className='shadow-md'>
-                {selectedAI ? (
-                    AiVoiceData.map(({ buttonLabel, audioSource, imageSource }) => (
-                        <VoiceCard
-                            key={buttonLabel}
-                            buttonLabel={buttonLabel}
-                            audioSource={audioSource}
-                            imageSource={imageSource}
-                            isSelected={selectedAI === buttonLabel}
-                            handleSelect={handleAISelect}
-                            currentlyPlayingAudio={currentlyPlaying}
-                            setCurrentlyPlaying={setCurrentlyPlaying}
-                        />
-                    ))
-                ) : (
-                    celebVoiceData.map(({ buttonLabel, audioSource, imageSource }) => (
-                        <VoiceCard
-                            key={buttonLabel}
-                            buttonLabel={buttonLabel}
-                            audioSource={audioSource}
-                            imageSource={imageSource}
-                            isSelected={selectedCeleb === buttonLabel}
-                            handleSelect={handleCelebSelect}
-                            currentlyPlayingAudio={currentlyPlaying}
-                            setCurrentlyPlaying={setCurrentlyPlaying}
-                        />
-                    ))
-                )}
+                {(selectedAI ? AiVoiceData : celebVoiceData).map((voiceData: VoiceData) => (
+                    <VoiceCard
+                        key={voiceData.buttonLabel}
+                        buttonLabel={voiceData.buttonLabel}
+                        audioSource={voiceData.audioSource}
+                        imageSource={voiceData.imageSource}
+                        isSelected={selectedAI === voiceData.buttonLabel || selectedCeleb === voiceData.buttonLabel}
+                        handleSelect={selectedAI ? handleAISelect : handleCelebSelect}
+                        currentlyPlayingAudio={currentlyPlaying}
+                        setCurrentlyPlaying={setCurrentlyPlaying}
+                    />
+                ))}
             </div>
         </div>
     );
