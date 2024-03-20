@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Paper, Slider } from '@mantine/core';
 import StockVideo from './StockVideo';
 import AiAvatarsData from './AiAvatarsData';
 import Drop from '../Drop';
-import Image from 'next/image';
+import ReactPlayer from 'react-player';
 
 function Media() {
     const topTenAvatar = AiAvatarsData.slice(0, 10);
+    const [hoveredVideo, setHoveredVideo] = useState(null);
+
+    const handleMouseEnter = (videoId) => {
+        setHoveredVideo(videoId);
+    };
+
+    const handleMouseLeave = () => {
+        setHoveredVideo(null);
+    };
 
     return (
         <div className="mt-3">
@@ -17,13 +26,20 @@ function Media() {
                     <div key={video.id} className="video-container mx-4">
                         <Paper
                             className="video-player relative rounded-lg shadow-lg"
-                            style={{ width: "300px", height: "200px" }}
+                            style={{ width: "142px", height: "80px" }}
+                            key={video.id}
+                            onMouseEnter={() => handleMouseEnter(video.id)}
+                            onMouseLeave={handleMouseLeave}
                         >
-                            <video className="absolute inset-0 w-full h-full object-cover rounded-lg" controls>
-                                <source src={video.video_link} type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
-
+                            <ReactPlayer
+                                url={video.video_link}
+                                playing={hoveredVideo === video.id}
+                                controls={false}
+                                loop={true}
+                                width="100%"
+                                height="100%"
+                                style={{ borderRadius: '10px' }}
+                            />
                         </Paper>
                     </div>
                 ))}
@@ -44,9 +60,6 @@ function Media() {
                                     className="object-cover w-full h-full"
                                 />
                             </div>
-                            <span className="absolute bottom-0 left-0 right-0 bg-white px-2 py-1 rounded-b-lg">
-                                {avatar.name}
-                            </span>
                         </div>
                     ))}
                 </div>

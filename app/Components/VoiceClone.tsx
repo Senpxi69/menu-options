@@ -26,7 +26,7 @@ const VoiceClone: React.FC<VoiceCloneProps> = ({ onClick }) => {
             <StyledButtonWrapper>
                 <Button
                     size="lg"
-                    className="bg-gray-100 border border-black hover:border-blue-500 flex flex-col justify-center items-center"
+                    className="bg-gray-100 border border-gray-300 hover:border-blue-500 flex flex-col justify-center items-center"
                     style={{
                         width: '168px',
                         height: '104px',

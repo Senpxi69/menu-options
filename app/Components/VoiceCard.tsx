@@ -46,7 +46,7 @@ const VoiceCard: React.FC<VoiceCardProps> = ({ buttonLabel, audioSource, imageSo
                 </button>
                 <span className="font-medium text-sm">{buttonLabel}</span>
                 <div className="flex items-center">
-                    <Image alt={buttonLabel} loading="lazy" width={40} height={40} decoding="async" src={imageSource} />
+                    <img alt={buttonLabel} loading="lazy" width={40} height={40} decoding="async" src={imageSource} />
                 </div>
             </div>
             <audio preload="none" ref={audioRef} src={audioSource}></audio>

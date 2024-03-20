@@ -39,41 +39,41 @@ const Layout = () => {
 
     return (
         <div className="flex h-screen relative justify-evenly py-2 rounded-lg">
-            <div className="bg-neutral-300 text-white w-20 flex flex-col items-center justify-around z-20">
+            <div className="bg-white text-white w-20 flex flex-col items-center justify-around z-20">
                 <button
-                    className={`py-2 px-4 rounded-full focus:outline-none ${activeSection === 'home' ? 'bg-blue-500 text-gray-100' : 'text-gray-400 hover:bg-gray-400'}`}
+                    className={`py-2 px-4 rounded-full focus:outline-none ${activeSection === 'home' ? 'bg-blue-500 text-gray-100' : 'text-gray-400 hover:bg-gray-200'}`}
                     onClick={() => handleClick('home')}
                 >
                     <HomeSharpIcon />
                 </button>
                 <button
-                    className={`py-2 px-4 rounded-full focus:outline-none ${activeSection === 'translate' ? 'bg-blue-500 text-gray-100' : 'text-gray-400 hover:bg-gray-400'}`}
+                    className={`py-2 px-4 rounded-full focus:outline-none ${activeSection === 'translate' ? 'bg-blue-500 text-gray-100' : 'text-gray-400 hover:bg-gray-200'}`}
                     onClick={() => handleClick('translate')}
                 >
                     <TranslateSharpIcon />
                 </button>
                 <button
-                    className={`py-2 px-4 rounded-full focus:outline-none ${activeSection === 'media' ? 'bg-blue-500 text-gray-100' : 'text-gray-400 hover:bg-gray-400'}`}
+                    className={`py-2 px-4 rounded-full focus:outline-none ${activeSection === 'media' ? 'bg-blue-500 text-gray-100' : 'text-gray-400 hover:bg-gray-200'}`}
                     onClick={() => handleClick('media')}
                 >
                     <AddBoxSharpIcon />
                 </button>
-                <button className="py-2 px-4 rounded-full focus:outline-none text-gray-400 hover:bg-gray-400">
+                <button className="py-2 px-4 rounded-full focus:outline-none text-gray-400 hover:bg-gray-200">
                     <MusicNoteSharpIcon />
                 </button>
-                <button className="py-2 px-4 rounded-full focus:outline-none text-gray-400 hover:bg-gray-400">
+                <button className="py-2 px-4 rounded-full focus:outline-none text-gray-400 hover:bg-gray-200">
                     <CallToActionSharpIcon />
                 </button>
-                <button className="py-2 px-4 rounded-full focus:outline-none text-gray-400 hover:bg-gray-400">
+                <button className="py-2 px-4 rounded-full focus:outline-none text-gray-400 hover:bg-gray-200">
                     <TitleSharpIcon />
                 </button>
-                <button className="py-2 px-4 rounded-full focus:outline-none text-gray-400 hover:bg-gray-400">
+                <button className="py-2 px-4 rounded-full focus:outline-none text-gray-400 hover:bg-gray-200">
                     <TableChartSharpIcon />
                 </button>
-                <button className="py-2 px-4 rounded-full focus:outline-none text-gray-400 hover:bg-gray-400">
+                <button className="py-2 px-4 rounded-full focus:outline-none text-gray-400 hover:bg-gray-200">
                     <VideocamSharpIcon />
                 </button>
-                <button className="py-2 px-4 rounded-full focus:outline-none text-gray-400 hover:bg-gray-400">
+                <button className="py-2 px-4 rounded-full focus:outline-none text-gray-400 hover:bg-gray-200">
                     <QuestionMarkSharpIcon />
                 </button>
             </div>
@@ -84,12 +84,10 @@ const Layout = () => {
                     {`
                     ::-webkit-scrollbar {
                         width: 8px;
-                    }
-                    ::-webkit-scrollbar-track {
-                        background: #f1f1f1; 
+                        height: 8px;
                     }
                     ::-webkit-scrollbar-thumb {
-                        background: #a0aec0; 
+                        background: #a0aec0;
                         border-radius: 4px;
                     }
                     ::-webkit-scrollbar-thumb:hover {

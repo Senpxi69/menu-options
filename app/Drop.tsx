@@ -9,7 +9,7 @@ function Drop() {
     return (
         <div>
             <Dropzone
-                className={` ${isHovered ? 'bg-gray-400' : ''} hover:border-blue-500`}
+                className={`border-2 border-gray-300 hover:border-blue-500 ${isHovered ? 'bg-gray-400' : ''}`}
                 onDrop={(files: File[]) => {
                     console.log('Dropped files:', files);
                 }}
@@ -17,7 +17,7 @@ function Drop() {
                 maxSize={30 * 1024 ** 2}
                 style={{
                     padding: '20px',
-                    border: `2px dashed ${theme.colors.dark[6]}`,
+                    border: `2px dashed ${theme.colors.dark[6]} !important`, // Apply border color with !important
                     borderRadius: '8px',
                     textAlign: 'center',
                     cursor: 'pointer',
