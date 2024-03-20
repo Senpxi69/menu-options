@@ -21,7 +21,7 @@ const Layout = () => {
     const [isTextAreaVisible, setIsTextAreaVisible] = useState(false);
     const [isVoiceAreaVisible, setIsVoiceAreaVisible] = useState(false);
 
-    const handleClick = (section) => {
+    const handleClick = (section: string) => {
         setActiveSection(section);
         setIsTextAreaVisible(false);
         setIsVoiceAreaVisible(false);
